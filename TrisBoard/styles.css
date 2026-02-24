@@ -1,0 +1,14 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem;
+}
+
+#reset {
+    font-size: 60px;
+    margin: 4rem;
+    border-radius: 20px;
+    padding: 10px;
+}
+
