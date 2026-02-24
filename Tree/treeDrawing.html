@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Recursive Tree</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        canvas {
+            background: white;
+            border: 1px solid black;
+            margin-top: 10px;
+        }
+
+        .controls {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>The Recursive Tree</h2>
+
+<div class="controls">
+    Start Length:
+    <input type="number" id="length" value="300">
+
+    Angle Diff (degrees):
+    <input type="number" id="angle" value="25">
+
+    Depth:
+    <input type="number" id="depth" value="9">
+
+    <button onclick="drawTree()">Draw</button>
+</div>
+
+<canvas id="canvas" width="800" height="800"></canvas>
+
+<script src="tree.js"></script>
+</body>
+</html>

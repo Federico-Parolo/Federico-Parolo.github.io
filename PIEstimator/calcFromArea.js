@@ -30,8 +30,6 @@ window.addEventListener('load', () => {
     let h = (width/2) / attempts;
     //console.log(h);
 
-    
-    let bTot = width/2;
 
     calcPI = () => {
         for (let i = 0; i < attempts; ++i) {

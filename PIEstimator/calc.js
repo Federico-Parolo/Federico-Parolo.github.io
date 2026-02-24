@@ -46,16 +46,13 @@ window.addEventListener('load', () => {
     };
 
 
-    let throws = 10000000;
+    let throws = 100;
     calcPI(throws);
     let pi = (insideP / throws) * 4;
     textArea.innerHTML = pi;
 
+    const pointAdder = document.querySelector("#");
 
-    const attempt = {
-        val : pi,
-        nPoints : throws
-    };
 
 
 }); 
