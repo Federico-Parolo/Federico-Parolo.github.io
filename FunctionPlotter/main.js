@@ -162,7 +162,7 @@ window.addEventListener('load', () => {
     drawAxes(100);
     
     const zoomBar = document.querySelector("#zoom");
-    zoomBar.addEventListener("change", () => {
+    zoomBar.addEventListener("input", () => {
         scale = zoomBar.value;
         if (zoomBar.value == 0.5) zoomBar.value = -1.5;
         if (zoomBar.value == -1) zoomBar.value = 1; 

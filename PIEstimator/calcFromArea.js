@@ -1,6 +1,6 @@
 "use strict";
 let sumOfAreas = 0;
-let calcPI =() => {};
+let calcPI = () => {};
 
 
 window.addEventListener('load', () => {
@@ -26,15 +26,16 @@ window.addEventListener('load', () => {
     ctx.lineTo(width,height/2);
     ctx.stroke();
 
-    let attempts = 10000;
+    let attempts = 100;
     let h = (width/2) / attempts;
     //console.log(h);
 
 
     calcPI = () => {
+        sumOfAreas = 0;
         for (let i = 0; i < attempts; ++i) {
             let hI = Math.sqrt(r*r - Math.pow(h*i,2));
-
+            ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(width/2 + h*i,height/2);
             ctx.lineTo(width/2 + h*i,height/2 - (hI));
@@ -45,16 +46,33 @@ window.addEventListener('load', () => {
             
         }
         
-        
+        if (textArea) {
+            textArea.value = (sumOfAreas * 4) / Math.pow(width/2,2);
+        }
         
     }
     
     calcPI();
 
 
-    if (textArea) {
-        textArea.value = (sumOfAreas * 4) / Math.pow(width/2,2);
-    }
+    
+
+    const rectangles = document.querySelector("#rectangles");
+    rectangles.addEventListener("input", (e) => {
+        ctx.clearRect(0,0,width,height);
+        attempts = rectangles.value;
+        h = (width/2) / attempts
+        ctx.beginPath();
+        ctx.arc(width/2,height/2,r,0,2*Math.PI);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(width/2,0);
+        ctx.lineTo(width/2,height/2);
+        ctx.lineTo(width,height/2);
+        ctx.stroke();
+        calcPI();
+    });
 
 
 }); 

@@ -15,16 +15,17 @@ window.addEventListener('load', () => {
     const r = width / 2;
     let insideP = 0;
     let outsideP = 0;
-
+    let throws = 100000;
 
 
     ctx.beginPath();
     ctx.arc(width/2,height/2,r,0,2*Math.PI);
     ctx.stroke();
 
+   
 
-
-    const calcPI = (nTrows) => {
+    const addPoints = (nTrows) => {
+        
         for (let i = 0; i < nTrows; ++i) {
             let x = Math.floor(Math.random() * width);
             //x = x - r;
@@ -46,13 +47,23 @@ window.addEventListener('load', () => {
     };
 
 
-    let throws = 100;
-    calcPI(throws);
+    
+    addPoints(throws);
     let pi = (insideP / throws) * 4;
     textArea.innerHTML = pi;
 
-    const pointAdder = document.querySelector("#");
+    const pointAdder = document.querySelector("#pointAdder");
 
+    pointAdder.addEventListener("keydown", (e) => {
+        if (e.key == "Enter") {
+            let n = Number(pointAdder.value);
+            pointAdder.value = "";
+            addPoints(n);
+            throws += n;
+            pi = (insideP / throws) * 4;
+            textArea.innerHTML = pi;
+        }
+    });
 
 
 }); 
