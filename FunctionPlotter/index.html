@@ -10,8 +10,14 @@
     <div id="options">
         <div id="zoomPane">
             <label for="zoom">Zoom</label>
-            <input type="range" id="zoom" min="-10" max="10" value="1" step="0.5">
+            <input type="range" id="zoom" min="-10" max="50" value="1" step="0.5">
             <span id="zoomValue"></span>
+        </div>
+        <div id="offsetPane">
+            <label for="offsetX">Offset X :</label>
+            <input type="range" name="offsetX" id="offsetX" min="-900" max="900" step="20" value="0" disabled="True">
+            <label for="offsetY">Offset Y:</label>
+            <input type="range" name="offsetY" id="offsetY" min="-900" max="900" step="20" value="0" disabled="True">
         </div>
         <div id="inputPane">
             <label for="equation">Input: </label>
@@ -21,6 +27,7 @@
             <span>Plotted: </span>
             <span id="eqn"></span>
         </div>
+        
     </div>
 
     <div id="screen">

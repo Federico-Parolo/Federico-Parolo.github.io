@@ -95,6 +95,8 @@ window.addEventListener('load', () => {
     const offY = height/2;
     let funStr = null;
 
+    let inOffX = 0;
+    let inOffY = 0;
     
     
     
@@ -142,18 +144,18 @@ window.addEventListener('load', () => {
 
         drawAxes(100);
         ctx.strokeStyle = "rgb(0,0,0)";
-        ctx.lineWidth = 2;
-        for (let x = minX; x < maxX; x+=step) {
+        ctx.lineWidth = 1;
+        for (let x = minX - Math.abs(inOffX); x < maxX + Math.abs(inOffX); x+=step) {
             let y0 = f(x);
             let y1 = f(x+step);
             ctx.beginPath();
-            ctx.moveTo((x)*scale + offX,(y0)*scale + offY);
-            ctx.lineTo((x+step)*scale + offX + 0.5,(y1)*scale + offY + 0.5);
+            ctx.moveTo((x)*scale + offX + inOffX,(y0)*scale + offY + inOffY);
+            ctx.lineTo((x+step)*scale + offX + inOffX,(y1)*scale + offY + inOffY);
             ctx.stroke();
         }
     };
-    let min = -100;
-    let max = 100;
+    let min = -900;
+    let max = 900;
     //let coeff = [1,1,-200];
     
     //drawF(min,max,coeff);
@@ -190,6 +192,21 @@ window.addEventListener('load', () => {
             const displayer = document.querySelector("#eqn");
             displayer.innerHTML = eqn;
         }
+    });
+
+    const rangeOffX = document.querySelector("#offsetX");
+    const rangeOffY = document.querySelector("#offsetY");
+
+    rangeOffX.addEventListener("input", () => {
+      inOffX = rangeOffX.value;
+      console.log(inOffX + " x off");
+      drawF(min,max,funStr);
+    });
+
+    rangeOffY.addEventListener("input", () => {
+      inOffY = rangeOffY.value;
+      console.log(inOffY + " y off");
+      drawF(min,max,funStr);
     });
 
 });

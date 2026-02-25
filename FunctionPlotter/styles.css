@@ -30,6 +30,15 @@ body {
     left: 5rem;
 }
 
+#offsetPane {
+    position: inherit;
+    top: 13rem;
+    left: 5rem;
+    display: flex;
+    flex-direction: column;
+
+}
+
 #Canvas {
     border: 1px solid black;
 }
