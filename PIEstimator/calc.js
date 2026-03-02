@@ -2,8 +2,6 @@
 
 
 window.addEventListener('load', () => {
-
-
     const canvas = document.querySelector("#Canvas");
     const textArea = document.querySelector("#text");
     console.log(canvas);
@@ -63,6 +61,20 @@ window.addEventListener('load', () => {
             pi = (insideP / throws) * 4;
             textArea.innerHTML = pi;
         }
+    });
+
+    const reset = document.querySelector("#reset");
+    reset.addEventListener("click", () => {
+        ctx.clearRect(0,0,width,height);
+        ctx.beginPath();
+        ctx.arc(width/2,height/2,r,0,2*Math.PI);
+        ctx.stroke();
+        insideP = 0;
+        outsideP = 0;
+        throws = 100000;
+        addPoints(throws);
+        pi = (insideP / throws) * 4;
+        textArea.innerHTML = pi;
     });
 
 
