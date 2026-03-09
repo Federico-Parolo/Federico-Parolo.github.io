@@ -16,6 +16,15 @@ async function main() {
     
 
     async function drawAndDisplay() {
+        const cardHistory = document.querySelector("#history");
+        if (cardImage.scr != "") {
+            let image  = document.createElement("img");
+            image.id = "cardImage";
+            let l = cardImage.src;
+            image.src = l;
+            
+            cardHistory.appendChild(image);
+        }
         const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`);
         if (!response.ok) {
             console.log(response.error + " response");
