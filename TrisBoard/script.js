@@ -7,9 +7,9 @@ window.addEventListener("load", () => {
     const cellSize = size / 3;
 
     const board = [
-      [1,2,0],
-      [0,1,2],
-      [2,0,1]
+      [0,0,0],
+      [0,0,0],
+      [0,0,0]
     ];
 
     // Clear canvas
@@ -112,9 +112,21 @@ window.addEventListener("load", () => {
         row = 2;
       }
       if (turn) {
-        drawX(ctx,row,col,cellSize);
+        if (board[row][col] == 0) {
+          board[row][col] = 1;
+          drawX(ctx,row,col,cellSize);
+        } else {
+          turn = !turn;
+        }
+        
       }else {
-        drawCircle(ctx,row,col,cellSize);
+        if (board[row][col] == 0) {
+          board[row][col] = 2;
+          drawCircle(ctx,row,col,cellSize);
+        } else {
+          turn = !turn
+        }
+        
       }
       turn = !turn;
     });

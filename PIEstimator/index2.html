@@ -9,8 +9,16 @@
     <div style="display: flex;justify-content: center;align-items: center;">
         <canvas id="Canvas" width="800" height="800" style="background-color: white; image-rendering: pixelated; border: 2px solid red;"></canvas>
     </div>
-    <textarea id="text" placeholder="(Pi = 3.14)" readonly style="resize: none;position: fixed; top:0;left:0"></textarea>
-    <input type="text" id="pointAdder" placeholder="Insert #Points to draw" style="resize: none;position: fixed; top: 50px; left: 0" autocomplete="off">
-    <button type="button" id="reset" style="position: fixed;top: 100px; left: 0;">Reset to initial points</button>
+    <div style="position: fixed; top: 1rem; left: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+        <textarea id="text" placeholder="(Pi = 3.14)" readonly disabled></textarea>
+    <input type="text" id="pointAdder" placeholder="Insert #Points to draw" autocomplete="off">
+    <button type="button" id="reset">Reset to initial points</button>
+    <div>
+        <span>Points:</span>
+        <span id="nPoints"></span>
+    </div>
+    
+    </div>
+    
 </body>
 <script src="calc.js"></script>

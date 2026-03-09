@@ -4,6 +4,7 @@
 window.addEventListener('load', () => {
     const canvas = document.querySelector("#Canvas");
     const textArea = document.querySelector("#text");
+    const pointsLabel = document.querySelector("#nPoints");
     console.log(canvas);
     const width = canvas.width;
     const height = canvas.height;
@@ -47,6 +48,7 @@ window.addEventListener('load', () => {
 
     
     addPoints(throws);
+    pointsLabel.innerHTML = throws;
     let pi = (insideP / throws) * 4;
     textArea.innerHTML = pi;
 
@@ -60,6 +62,7 @@ window.addEventListener('load', () => {
             throws += n;
             pi = (insideP / throws) * 4;
             textArea.innerHTML = pi;
+            pointsLabel.innerHTML = throws;
         }
     });
 
@@ -75,6 +78,7 @@ window.addEventListener('load', () => {
         addPoints(throws);
         pi = (insideP / throws) * 4;
         textArea.innerHTML = pi;
+        pointsLabel.innerHTML = throws;
     });
 
 
