@@ -35,3 +35,19 @@ button {
     outline: 5rem;
     outline-color: gainsboro;
 }
+
+#history {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap-reverse;
+    align-items: end;
+}
+
+#history img.resize {
+    width: 50%;
+    height: auto;
+}
+
+#msg {
+    color: white;
+}

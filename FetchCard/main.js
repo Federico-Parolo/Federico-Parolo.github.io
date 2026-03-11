@@ -15,9 +15,9 @@ async function main() {
     
     
 
-    async function drawAndDisplay() {
+    async function drawAndDisplay(bool = true) {
         const cardHistory = document.querySelector("#history");
-        if (cardImage.scr != "") {
+        if (cardImage.scr != "" && bool) {
             let image  = document.createElement("img");
             image.id = "cardImage";
             let l = cardImage.src;
@@ -45,7 +45,7 @@ async function main() {
 
 
     }
-    drawAndDisplay();
+    drawAndDisplay(false);
 
 
     drawButton.addEventListener("click", () => {
@@ -54,7 +54,7 @@ async function main() {
 
     drawDeckButton.addEventListener("click", async () => {
         deckID = await getNewDeckId();
-        drawAndDisplay();
+        drawAndDisplay(false);
     });
 
 }
