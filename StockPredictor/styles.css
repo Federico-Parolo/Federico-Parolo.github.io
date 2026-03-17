@@ -1,0 +1,23 @@
+body {
+    background-color: gainsboro;
+    font-family: fantasy;
+    margin-top: 3rem;
+    
+}
+#content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    
+}
+
+#top-title {
+    font-weight: bold;
+    font-size: 4rem;
+
+}
+
+p {
+    font-size: 2rem;
+}

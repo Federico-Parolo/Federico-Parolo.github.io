@@ -1,0 +1,55 @@
+body {
+    background-color: gainsboro;
+    font-family: fantasy;
+    margin-top: 3rem;
+    
+}
+#content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    
+}
+
+#top-title {
+    font-weight: bold;
+    font-size: 4rem;
+
+}
+
+p {
+    font-size: 2rem;
+}
+
+#word-container {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+#button-container {
+    background-color: gray;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    gap: 2rem;
+    font-size: 1.5rem;
+}
+
+#italian {
+    font-size: inherit;
+    border-radius: inherit;
+    padding: 0.5rem;
+}
+
+#english {
+    font-size: inherit;
+    border-radius: inherit;
+}
+
+#idk {
+    font-size: inherit;
+    border-radius: inherit;
+}

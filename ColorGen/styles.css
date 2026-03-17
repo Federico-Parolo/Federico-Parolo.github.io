@@ -1,0 +1,56 @@
+body {
+    background-color: gainsboro;
+    font-family: fantasy;
+    
+}
+#content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    
+}
+
+#top-title {
+    font-weight: bold;
+    font-size: 4rem;
+
+}
+
+p {
+    font-size: 2rem;
+}
+
+#colorShower {
+    min-width: 30rem;
+    min-height: 30rem;
+    background-color: black;
+    border: 4px solid white;
+    border-radius: 2rem;
+}
+
+#button-container {
+    background-color: gray;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    gap: 2rem;
+    font-size: 1.5rem;
+}
+
+#hot {
+    font-size: inherit;
+    border-radius: inherit;
+    padding: 0.5rem;
+}
+
+#cold {
+    font-size: inherit;
+    border-radius: inherit;
+}
+
+#idk {
+    font-size: inherit;
+    border-radius: inherit;
+}
