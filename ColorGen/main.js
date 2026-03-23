@@ -40,7 +40,7 @@ const storeAndUpdate = function(opt,b = true) {
         body: JSON.stringify(data)
         })
         .then(res => res.json())
-        .then(json => consol.log(json))
+        .then(json => console.log(json))
 
     }
 
