@@ -1,8 +1,13 @@
 {
-    "rgby": [
-        [255,0,0,0]
-    ],
-    "words": [
-
-    ]
+  "rgby": [
+    {
+      "r": 211,
+      "g": 245,
+      "b": 250,
+      "y": 1,
+      "id": "u_CVchGjmQE"
+    }
+  ],
+  "words": [],
+  "$schema": "./node_modules/json-server/schema.json"
 }

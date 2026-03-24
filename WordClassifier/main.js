@@ -5,6 +5,8 @@ const enButton = document.querySelector("#english");
 const idkButton = document.querySelector("#idk");
 const wordDisplayer = document.querySelector("#word");
 
+const url = "http://localhost:3000/words";
+
 let word,res;
 
 itButton.addEventListener("click", () => {
@@ -22,10 +24,48 @@ idkButton.addEventListener("click", () => {
 
 
 
+// Italian = 0
+// English = 1
+const storeAndUpdate = async function(opt,boolean = true) {
 
-const storeAndUpdate = async function(opt,b = true) {
+    if (opt === null) return;
 
-    if (b) console.log(word + "->" + opt + ` (${res[0].language})`);
+    if (boolean) console.log(word + "->" + opt + ` (${res[0].language})`);
+
+    if (opt != "Undef") {
+        let y = (opt === "Cold") ? 1 : 0;
+        const data = {
+            word : res[0].language,
+            "y": (opt === "Italian" ? 0 : 1)
+        };
+
+        let opts = {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        fetch(url, opts)
+        .then(response => {
+            if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(err => {
+            console.error(err);
+        });
+
+    }
+
+
+
+
 
     res = await fetch(source + langs[Math.floor(Math.random() * langs.length)]);
     //console.log(res);
@@ -37,4 +77,7 @@ const storeAndUpdate = async function(opt,b = true) {
 
 }
 
-storeAndUpdate("",false);
+if (!sessionStorage.getItem("initialized")) {
+    storeAndUpdate(null, false);
+    sessionStorage.setItem("initialized", "true");
+}
