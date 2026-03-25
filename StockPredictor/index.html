@@ -9,14 +9,22 @@
 </head>
 <body>
     <div id="content">
-        <div>
+        <div id="main-content">
             <header id="top-title">Stock Predictor</header>
             <p>Insert the last values of a stock currency to have a prediction:</p>
             <input type="text" name="stockPrice" id="dataSample" autocomplete="off" placeholder="±x,y%">
             <button type="button" id="plotButton">Show Change</button>
+            
+            <div id="diagram-container">
+                <canvas id="stockDiagram" width="500" height="300"></canvas>
+            </div>
         </div>
-        <div id="diagram-container">
-            <canvas id="stockDiagram" width="500" height="300"></canvas>
+        
+
+        <div id="data-history">
+            <div id="last-changes">
+
+            </div>
         </div>
     </div>
 </body>

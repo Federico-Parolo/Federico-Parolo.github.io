@@ -6,8 +6,16 @@ body {
 }
 #content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 4rem;
+    align-items: center;
+    
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     align-items: center;
     
 }
@@ -25,3 +33,14 @@ p {
 #diagram-container {
     border: 1px solid black;
 }
+
+#last-changes {
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: black;
+    width: 100px;
+    height: 100px;
+    position: sticky;
+    
+}
+

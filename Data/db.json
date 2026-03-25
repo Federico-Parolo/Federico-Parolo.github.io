@@ -237,6 +237,27 @@
       "b": 195,
       "y": 1,
       "id": "EF3n0hj_0hk"
+    },
+    {
+      "r": 201,
+      "g": 87,
+      "b": 133,
+      "y": 0,
+      "id": "K-nXEw2t604"
+    },
+    {
+      "r": 217,
+      "g": 231,
+      "b": 23,
+      "y": 0,
+      "id": "QtinC6ebAFM"
+    },
+    {
+      "r": 179,
+      "g": 247,
+      "b": 175,
+      "y": 0,
+      "id": "PiS5Ybo0LLc"
     }
   ],
   "words": [
@@ -245,6 +266,60 @@
       "lang": "en",
       "y": 1,
       "id": "qmMBDwlRd-0"
+    },
+    {
+      "word": "zimbi",
+      "lang": "en",
+      "y": 1,
+      "id": "C7Uyi7nBYyk"
+    },
+    {
+      "word": "mosca",
+      "lang": "it",
+      "y": 1,
+      "id": "JW6wDobm_kg"
+    },
+    {
+      "word": "rythe",
+      "lang": "en",
+      "y": 1,
+      "id": "_Bb3Ou0ZCYU"
+    },
+    {
+      "word": "unmet",
+      "lang": "en",
+      "y": 1,
+      "id": "n8Z_03IzTcg"
+    },
+    {
+      "word": "tarps",
+      "lang": "en",
+      "y": 1,
+      "id": "BKKWDIa4ME8"
+    },
+    {
+      "word": "gufo",
+      "lang": "it",
+      "y": 1,
+      "id": "Nhb8Avh03Qc"
+    },
+    {
+      "word": "gufo",
+      "lang": "it",
+      "y": 1,
+      "id": "vAKExHJWcq8"
+    },
+    {
+      "word": "slaes",
+      "lang": "en",
+      "y": 1,
+      "id": "pEudSMEZREQ"
+    },
+    {
+      "word": "barra",
+      "lang": "en",
+      "y": 1,
+      "id": "jcCh51GKm-I"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
