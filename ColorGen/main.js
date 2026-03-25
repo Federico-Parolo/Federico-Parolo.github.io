@@ -20,11 +20,10 @@ idkButton.addEventListener('click', (e) => {
 });
 
 const storeAndUpdate = function(opt,boolean = true) {
-    if (opt === null) return;
 
     if (boolean)console.log("R: " + r + " G: " + g + " B: " + b + "-> " + opt);
 
-    if (opt != "Undef") {
+    if (opt && opt != "Undef") {
         let y = (opt === "Cold") ? 1 : 0;
         const data = {
             "r": r,
@@ -66,7 +65,6 @@ const storeAndUpdate = function(opt,boolean = true) {
 
 }
 
-if (!sessionStorage.getItem("initialized")) {
-    storeAndUpdate(null, false);
-    sessionStorage.setItem("initialized", "true");
-}
+
+storeAndUpdate(null, false);
+

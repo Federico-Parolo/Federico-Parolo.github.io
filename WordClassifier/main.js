@@ -9,15 +9,18 @@ const url = "http://localhost:3000/words";
 
 let word,res;
 
-itButton.addEventListener("click", () => {
+itButton.addEventListener("click", (e) => {
+    
     storeAndUpdate("Italian");
 });
 
-enButton.addEventListener("click", () => {
+enButton.addEventListener("click", (e) => {
+
     storeAndUpdate("English");
 });
 
-idkButton.addEventListener("click", () => {
+idkButton.addEventListener("click", (e) => {
+
     storeAndUpdate("Undef");
 });
 
@@ -26,17 +29,20 @@ idkButton.addEventListener("click", () => {
 
 // Italian = 0
 // English = 1
-const storeAndUpdate = async function(opt,boolean = true) {
+const storeAndUpdate = function(opt,boolean = true) {
 
-    if (opt === null) return;
+    if (opt && boolean && res != undefined) {
+        console.log(word + "->" + opt + ` (${res[0].language})`);
+    }
 
-    if (boolean) console.log(word + "->" + opt + ` (${res[0].language})`);
 
-    if (opt != "Undef") {
-        let y = (opt === "Cold") ? 1 : 0;
+    if (opt && res != undefined && opt != "Undef") {
+
+        let y = (opt === "italian") ? 0 : 1;
         const data = {
-            word : res[0].language,
-            "y": (opt === "Italian" ? 0 : 1)
+            "word" : word,
+            "lang" : res[0].language,
+            "y" : y
         };
 
         let opts = {
@@ -46,6 +52,8 @@ const storeAndUpdate = async function(opt,boolean = true) {
             },
             body: JSON.stringify(data)
         };
+
+
 
         fetch(url, opts)
         .then(response => {
@@ -63,21 +71,19 @@ const storeAndUpdate = async function(opt,boolean = true) {
 
     }
 
+    update();
+
+}
 
 
-
-
+async function update() {
     res = await fetch(source + langs[Math.floor(Math.random() * langs.length)]);
-    //console.log(res);
     res = await res.json();
     console.log(res);
     word = res[0].word;
 
     wordDisplayer.innerHTML = word;
-
 }
 
-if (!sessionStorage.getItem("initialized")) {
-    storeAndUpdate(null, false);
-    sessionStorage.setItem("initialized", "true");
-}
+storeAndUpdate(null, false);
+
