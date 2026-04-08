@@ -1,0 +1,12 @@
+{
+    "data": [
+        {
+            "id": "gestito da json-server o messo in proprio",
+            "position" : "Identificativo postazione laboratorio stringa del tipo (LEN4-16)",
+            "temperature" : 0.0,
+            "humidity": 0.0,
+            "luminosity": 0.0,
+            "timestamp": "ora e data acquisizione della misura formato ISO (YYYY-MM-DDThh:mm:ss)" 
+        }
+    ]
+}

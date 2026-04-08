@@ -300,6 +300,55 @@
       "b": 88,
       "y": 0,
       "id": "ujVZW203Zqg"
+    },
+    {
+      "r": 70,
+      "g": 136,
+      "b": 181,
+      "y": 0,
+      "id": "RYhE9-1hr28"
+    },
+    {
+      "r": 110,
+      "g": 149,
+      "b": 36,
+      "y": 0,
+      "id": "YkDko_LcFb8"
+    },
+    {
+      "r": 44,
+      "g": 165,
+      "b": 52,
+      "y": 0,
+      "id": "pMvKM5IpnQo"
+    },
+    {
+      "r": 145,
+      "g": 11,
+      "b": 48,
+      "y": 0,
+      "id": "QPRzTwEHHnc"
+    },
+    {
+      "r": 96,
+      "g": 98,
+      "b": 194,
+      "y": 0,
+      "id": "UFICJT0Bf-E"
+    },
+    {
+      "r": 161,
+      "g": 237,
+      "b": 27,
+      "y": 0,
+      "id": "ehi7_MnR4Wc"
+    },
+    {
+      "r": 169,
+      "g": 239,
+      "b": 99,
+      "y": 0,
+      "id": "QBzx3L36CxM"
     }
   ],
   "words": [
@@ -362,6 +411,90 @@
       "lang": "en",
       "y": 1,
       "id": "jcCh51GKm-I"
+    },
+    {
+      "word": "habit",
+      "lang": "en",
+      "y": 1,
+      "id": "pUI5mdroV8A"
+    },
+    {
+      "word": "caphs",
+      "lang": "en",
+      "y": 1,
+      "id": "wEyJBLmDUYo"
+    },
+    {
+      "word": "ommel",
+      "lang": "en",
+      "y": 1,
+      "id": "slFFlhX3QpI"
+    },
+    {
+      "word": "tiges",
+      "lang": "en",
+      "y": 1,
+      "id": "z4sIph-NyMM"
+    },
+    {
+      "word": "alter",
+      "lang": "en",
+      "y": 1,
+      "id": "YRr9sfoZ7Y4"
+    },
+    {
+      "word": "francia",
+      "lang": "it",
+      "y": 1,
+      "id": "GxDGGx6SYYw"
+    },
+    {
+      "word": "manor",
+      "lang": "en",
+      "y": 1,
+      "id": "ZyOR6uAvSAI"
+    },
+    {
+      "word": "bolix",
+      "lang": "en",
+      "y": 1,
+      "id": "9Z54WbmJ6ic"
+    },
+    {
+      "word": "anguilla",
+      "lang": "it",
+      "y": 1,
+      "id": "LsseVS0viW0"
+    },
+    {
+      "word": "narvalo",
+      "lang": "it",
+      "y": 1,
+      "id": "Dz_JnHopkQc"
+    },
+    {
+      "word": "cina",
+      "lang": "it",
+      "y": 1,
+      "id": "kCI8k2E8xd8"
+    },
+    {
+      "word": "mudra",
+      "lang": "en",
+      "y": 1,
+      "id": "DZ5IYcF9YTM"
+    },
+    {
+      "word": "equitazione",
+      "lang": "it",
+      "y": 1,
+      "id": "6KEmrtwawyk"
+    },
+    {
+      "word": "libia",
+      "lang": "it",
+      "y": 1,
+      "id": "aruQJleA9hc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -4,6 +4,7 @@ const idkButton = document.querySelector("#idk");
 const colorArea = document.querySelector("#colorShower");
 let r,g,b;
 const url = "http://localhost:3000/rgby";
+//const alfUrl = "http://192.168.4.45:3000/stocks";
 
 
 hotButton.addEventListener('click', (e) => {
