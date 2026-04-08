@@ -1,0 +1,16 @@
+#page {
+    display: flex;
+    align-items: stretch;
+}
+
+#left-pane {
+    background-color: gray;
+    flex-grow: 1;
+    align-self: stretch;
+    
+}
+#main-pane {
+    background-color: gainsboro;
+    flex-grow: 4;
+    align-self: stretch;
+}
