@@ -9,15 +9,30 @@
 </head>
 <body>
     <div id="page">
+
         <div id="left-pane">
-            <header>Lab Monitoring</header>
+            <header id="title">Lab Monitoring</header>
+            <div id="lab-selection">
+                <input type="button" value="Lap-2">
+                <input type="button" value="Oen-2">
+            </div>
+            
         </div>
+
+
         <div id="main-pane">
-            <canvas id="dashboard"></canvas>
+            <header id="title">Wheather station dashboard</header>
+            <div id="data">
+                <span id="temp">Temperature: 24°C</span>
+                <span id="hum">Humidity: aaa</span>
+                <span id="lum">Luminosity: nigga</span>
+            </div>
+            <div id="chart">
+                <canvas id="dashboard" width="600" height="400"></canvas>
+            </div>
         </div>
+
+
     </div>
-    
-    
-    
 </body>
 </html>

@@ -1,16 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+}
 #page {
     display: flex;
-    align-items: stretch;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
 }
 
 #left-pane {
+    display: flex;
+    flex-direction: column;
     background-color: gray;
-    flex-grow: 1;
+    flex-grow: 0.3;
     align-self: stretch;
     
 }
 #main-pane {
+    display: flex;
     background-color: gainsboro;
     flex-grow: 4;
     align-self: stretch;
+    flex-direction: column;
+}
+
+#title {
+    align-self: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    padding: 2rem;
+}
+
+#lab-selection {
+    display: flex;
+    flex-direction: column;
+}
+
+#data {
+    display: flex;
+    background-color: rgb(192, 175, 153);
+    align-self: center;
+    border-radius: 1rem;
+    align-items: center;
+    width: fit-content;
+    padding: 1rem;
+}
+
+#dashboard {
+    border-radius: 1rem;
+}
+
+#temp, #hum, #lum {
+    background-color: gray;
+    padding: 1rem;
+    box-shadow: 1rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem;
 }
