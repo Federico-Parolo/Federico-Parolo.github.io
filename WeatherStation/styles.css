@@ -38,7 +38,7 @@ body {
     flex-direction: column;
 }
 
-#data {
+.data {
     display: flex;
     background-color: rgb(192, 175, 153);
     align-self: center;
@@ -50,6 +50,12 @@ body {
 
 #dashboard {
     border-radius: 1rem;
+    align-self: center;
+}
+
+#chart {
+    display: flex;
+    align-items: center;
 }
 
 #temp, #hum, #lum {
@@ -58,4 +64,13 @@ body {
     box-shadow: 1rem;
     border-radius: 0.5rem;
     margin: 0.5rem;
+}
+
+#option-pane {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    bottom: 0;
+    margin-top: auto;
+    padding: 1rem;
 }
