@@ -5,8 +5,8 @@ const dataPane = document.querySelector("#data-section");
 const getDataButton = document.querySelector("#getData");
 const addressField = document.querySelector("#ip-address");
 const labsField = document.querySelector("#lab-selection");
-let data = [];
-let labs = {};
+let data = []; // array that contains parsed json
+let labs = {}; // object that contains a field for every lab with the respective measures
 ctx.fillRect(0,0,canvas.width,canvas.width);
 
 
@@ -72,11 +72,19 @@ function parseSample(sample) {
 }
 
 function createLabsSelections() {
+    while (labsField.firstChild) {
+            labsField.removeChild(labsField.lastChild);
+        }
     for (const [lab,samples] of Object.entries(labs)) {
         let labButton = document.createElement("input");
         labButton.type = "button";
         labButton.value = lab.split("-")[0];
+        labButton.classList.add("lab-button");
         labButton.addEventListener("click", e => {
+            for (let lab of labsField.children) {
+                lab.classList.remove("selected");
+            }
+            e.target.classList.add("selected");
             showLabDetails(samples);
         });
         labsField.appendChild(labButton);
@@ -101,34 +109,10 @@ function showLabDetails(samples) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*fetch(url, opts)
-.then(response => {
-    if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return response.json();
-})
-.then(data => {
-    console.log(data);
-})
-.catch(err => {
-    console.error(err);
-});*/
-
-
 /*
 3d leggero con laboratori disegnati in base ai dati, postazione attiva e disattivata, vista dall alto click su postazione fa apparire grafico e dettagli di quella
 
 */ 
+getData(addressField.value);
+console.log(labs["LAP1"]);
+plotMeasurements(labs);
