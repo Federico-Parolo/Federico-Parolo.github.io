@@ -1,6 +1,18 @@
 {
     "data": [
         { "id": "7a2b9c4d1e", "position": "LAP1-12", "temperature": 22.4, "humidity": 45.2, "luminosity": 320.5, "timestamp": "2026-04-27 08:30:00" },
+        { "id": "7a2b9c4d1e", "position": "LAP1-12", "temperature": 22.4, "humidity": 45.2, "luminosity": 320.5, "timestamp": "2026-04-27 08:30:00" },
+        { "id": "7a2b9c4d1e", "position": "LAP1-12", "temperature": 22.4, "humidity": 45.2, "luminosity": 320.5, "timestamp": "2026-04-27 08:30:00" },
+        { "id": "7a2b9c4d1e", "position": "LAP1-12", "temperature": 22.4, "humidity": 45.2, "luminosity": 320.5, "timestamp": "2026-04-27 08:30:00" },
+        { "id": "7a2b9c4d1e", "position": "LAP1-12", "temperature": 22.4, "humidity": 45.2, "luminosity": 320.5, "timestamp": "2026-04-27 08:30:00" },
+        { "id": "7a2b9c4d1e", "position": "LAP1-12", "temperature": 22.4, "humidity": 45.2, "luminosity": 320.5, "timestamp": "2026-04-27 08:30:00" },
+        { "id": "7a2b9c4d1e", "position": "LAP1-12", "temperature": 22.4, "humidity": 45.2, "luminosity": 320.5, "timestamp": "2026-04-27 08:30:00" },
+        { "id": "7a2b9c4d1e", "position": "LAP1-12", "temperature": 22.4, "humidity": 45.2, "luminosity": 320.5, "timestamp": "2026-04-27 08:30:00" },
+        { "id": "7a2b9c4d1e", "position": "LAP1-12", "temperature": 22.4, "humidity": 45.2, "luminosity": 320.5, "timestamp": "2026-04-27 08:30:00" },
+        { "id": "7a2b9c4d1e", "position": "LAP1-12", "temperature": 22.4, "humidity": 45.2, "luminosity": 320.5, "timestamp": "2026-04-27 08:30:00" },
+        { "id": "7a2b9c4d1e", "position": "LAP1-12", "temperature": 22.4, "humidity": 45.2, "luminosity": 320.5, "timestamp": "2026-04-27 08:30:00" },
+        { "id": "7a2b9c4d1e", "position": "LAP1-12", "temperature": 22.4, "humidity": 45.2, "luminosity": 320.5, "timestamp": "2026-04-27 08:30:00" },
+        { "id": "7a2b9c4d1e", "position": "LAP1-12", "temperature": 22.4, "humidity": 45.2, "luminosity": 320.5, "timestamp": "2026-04-27 08:30:00" },
         { "id": "3f8g2h1j5k", "position": "LEN4-16", "temperature": 21.8, "humidity": 44.8, "luminosity": 0.0, "timestamp": "2026-04-27 08:34:12" },
         { "id": "9m0n4p6q2r", "position": "OEN2-05", "temperature": 23.1, "humidity": 48.5, "luminosity": 410.2, "timestamp": "2026-04-27 08:37:45" },
         { "id": "1s5t8u2v3w", "position": "LAP9-30", "temperature": 20.9, "humidity": 42.1, "luminosity": 150.8, "timestamp": "2026-04-27 08:41:10" },
