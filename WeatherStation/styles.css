@@ -56,7 +56,7 @@ body {
     align-self: center;
 }
 
-#chart {
+#lab-topology {
     display: flex;
     align-items: center;
 }
@@ -90,4 +90,25 @@ body {
 
 #charts {
     background-color: azure;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    border-radius: 1rem;
+}
+
+#data-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    overflow: auto;
+    max-height: 50vh;
+    border-radius: 5px;
+    background-color: white;
+}
+
+#tab-division {
+    display: flex;
+    margin-top: 1rem;
+
 }

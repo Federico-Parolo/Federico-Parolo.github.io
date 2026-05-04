@@ -1,13 +1,10 @@
 const SERVER_ADDRESS = "localhost:3000";
-const canvas = document.querySelector("#dashboard");
-const ctx = canvas.getContext("2d");
 const dataSection = document.querySelector("#data-section");
 const getDataButton = document.querySelector("#getData");
 const addressField = document.querySelector("#ip-address");
 const labsSelection = document.querySelector("#lab-selection");
 let data = []; // array that contains parsed json
 let labs = {}; // object that contains a field for every lab with the respective measures
-ctx.fillRect(0,0,canvas.width,canvas.width);
 
 
 getDataButton.addEventListener("click",(e) => {
@@ -43,7 +40,6 @@ async function getData(address) {
 
         clearTimeout(timeoutId);
 
-        // Handle HTTP errors (server responded but not OK)
         if (!response.ok) {
             throw new Error(`HTTP_ERROR_${response.status}`);
         }
@@ -84,7 +80,7 @@ async function getData(address) {
             alert("Cannot connect to server (invalid address or offline)");
         }
 
-        console.error("Detailed error:", err);
+        console.error("Error:", err);
     }
 }
 
@@ -151,43 +147,29 @@ function showLabDetails(samples) {
 
 
 
-
 /*
 3d leggero con laboratori disegnati in base ai dati, postazione attiva e disattivata, vista dall alto click su postazione fa apparire grafico e dettagli di quella
 
 */ 
+
+
+addressField.value = SERVER_ADDRESS;
 getData(addressField.value);
-//console.log(labs["LAP1"]);
 const timestamps = data.map(d => d.timestamp);
 const temperatures = data.map(d => d.temperature);
 const humidities = data.map(d => d.humidity);
 const luminosities = data.map(d => d.luminosity);
 
-const tempChart = new Chart(document.getElementById("tempChart"), {
-  type: "line",
-  data: {
-    labels: timestamps,
-    datasets: [{
-      label: "Temperature (°C)",
-      data: temperatures,
-      fill: false,
-      tension: 0.1
-    }]
-  },
-  options: {
-    responsive: true,
-    scales: {
-      x: {
-        title: { display: true, text: "Time" },
-        type:  "time",
-        time: {
-            parser: "yyyy-MM-dd HH:mm:ss",
-            tooltipFormat: "yyyy-MM-dd HH:mm:ss"
+
+
+
+/*
+{
+    "id": "102010",
+    "position" : "LEN4-16",
+    "temperature" : 0.0,
+    "humidity": 0.0,
+    "luminosity": 0.0,
+    "timestamp": "formato ISO (YYYY-MM-DD hh:mm:ss)" 
         }
-      },
-      y: {
-        title: { display: true, text: "°C" }
-      }
-    }
-  }
-});
+*/

@@ -13,11 +13,14 @@
 
         <div id="left-pane">
             <header id="title">Lab Monitoring</header>
+        
             <div id="lab-selection">
                 <input type="button" value="Example">
             </div>
+
             <div id="option-pane">
                 <input type="button" value="Fetch" id="getData">
+                <label for="address">Insert server address and port:</label>
                 <input type="text" name="address" id="ip-address" autocomplete="off">
             </div>
             
@@ -26,22 +29,28 @@
 
         <div id="main-pane">
             <header id="title">Weather station dashboard</header>
-            
-            <div id="chart">
-                <canvas id="dashboard" width="600" height="400"></canvas>
-            </div>
-            <div id="data-section">
-                <div class="data">
-                    <span id="temp">Temperature: 24°C</span>
-                    <span id="hum">Humidity: aaa</span>
-                    <span id="lum">Luminosity: </span>
+
+            <div id="tab-division">
+                <div id="lab-topology">
+                    <canvas></canvas>
                 </div>
+
+                <div id="charts">
+                    <canvas id="tempChart"></canvas>
+                    <canvas id="humChart"></canvas>
+                    <canvas id="lumChart"></canvas>
+                </div>
+
+                <div id="data-section">
+                    <div class="data">
+                        <span id="temp">Temperature: NaN</span>
+                        <span id="hum">Humidity: NaN</span>
+                        <span id="lum">Luminosity: NaN</span>
+                    </div>
+                </div>
+
             </div>
-            <div id="charts">
-                <canvas id="tempChart"></canvas>
-                <canvas id="humChart"></canvas>
-                <canvas id="lumChart"></canvas>
-            </div>
+            
         </div>
 
 
