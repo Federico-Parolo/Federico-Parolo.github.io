@@ -4,8 +4,6 @@ const getDataButton = document.querySelector("#getData");
 const addressField = document.querySelector("#ip-address");
 const labsSelection = document.querySelector("#lab-selection");
 const workstationsList = document.querySelector("#workstations-list");
-const sidebarHider = document.querySelector("#sidebar-hider");
-const leftPane = document.querySelector("#left-pane");
 
 let data = []; // array that contains parsed json
 let labs = {}; // object that contains a field for every lab with the respective measures
@@ -17,8 +15,6 @@ let lumChartInstance = null;
 let currentSelectedLabSamples = [];
 let currentSelectedStation = null;
 
-let shown = true;
-
 getDataButton.addEventListener("click", (e) => {
     getData(addressField.value);
 });
@@ -27,16 +23,6 @@ addressField.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         getData(addressField.value);
     }
-});
-
-sidebarHider.addEventListener('click', () => {
-    if (shown) {
-        leftPane.style.visibility = "hidden";
-    } else {
-        leftPane.style.visibility = "visible";
-    }
-    shown = !shown;
-    console.log("now shown: " + shown);
 });
 
 async function getData(address) {
@@ -172,10 +158,8 @@ function showLabDetails(samples) {
         workstationsList.appendChild(btn);
     }
 
-    // update charts to show Lab Means
+    // Update charts to show Lab Means
     updateChartsForLab(samples);
-    // update heatmap
-    drawLabHeatmap(samples);
 }
 
 function showStationDetails(stationName) {
@@ -295,79 +279,6 @@ function updateChart(canvasId, labels, data, label, color) {
         if (canvasId === 'humChart') humChartInstance = newInstance;
         if (canvasId === 'lumChart') lumChartInstance = newInstance;
     }
-}
-
-function drawLabHeatmap(samples) {
-    const canvas = document.getElementById('heatmap-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-
-    // Find latest temperature for each station
-    const latestTemps = {};
-    const latestTimestamps = {};
-
-    for (const s of samples) {
-        const parts = s.position.split('-');
-        if (parts.length < 2) continue; // bad sample
-        const id = Number(parts[1]);
-
-        if (!latestTimestamps[id] || s.timestamp > latestTimestamps[id]) {
-            latestTimestamps[id] = s.timestamp;
-            latestTemps[id] = s.temperature;
-        }
-    }
-
-    // Clear canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Draw Teacher desk (id 0) - or if 0 doesn't exist, we just draw the shape
-    drawDesk(ctx, 0, latestTemps[0], canvas.width / 2 - 35, 50);
-
-    // Draw 5x6 grid (30 student 30 workstations max)
-    const rows = 5;
-    const cols = 6;
-    const startX = 70;
-    const startY = 120;
-    const spacingX = (canvas.width - 200) / (cols - 1);
-    const spacingY = (canvas.height - 150) / (rows - 1);
-
-    let currentId = 1;
-    for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-            const x = startX + col * spacingX;
-            const y = startY + row * spacingY;
-            drawDesk(ctx, currentId, latestTemps[currentId], x, y);
-            currentId++;
-        }
-    }
-}
-
-function drawDesk(ctx, id, temp, x, y) {
-    let l = id === 0 ? 35 : 30;
-    let height = id === 0 ? 25 : 20;
-    if (temp !== undefined) {
-        // temp to hue: 19 => 120 (green), 30 => 0 (red)
-        // color chosen based on color circle 
-        let t = (temp - 19) / (30 - 19);
-        t = Math.max(0, Math.min(1, t));
-        const hue = (1 - t) * 120;
-
-        ctx.fillStyle = `hsla(${hue}, 100%, 50%, 0.8)`;
-        // Rectangular workstation
-        ctx.beginPath();
-        ctx.lineTo(x, y, x + l, y);
-        ctx.lineTo(x + l, y, x + l, y + height);
-        ctx.lineTo(x + l, y + height, x, y + height);
-        ctx.lineTo(x, y + height, x, y);
-        ctx.fill();
-    }
-
-    // Text Label
-    ctx.fillStyle = 'gainsboro';
-    ctx.font = '12px Arial';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(id === 0 ? "Teacher" : id, x + l * 0.5, y - height);
 }
 
 // Initial fetch

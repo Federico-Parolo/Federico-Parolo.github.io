@@ -1,59 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Workstation monitort</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="main.js" defer></script>
 </head>
+
 <body>
     <div id="page">
+        <div id="sidebar">
+            <input type="button" value="<" id="sidebar-hider">
+            <div id="left-pane">
+                <header id="title">Lab Monitoring</header>
 
-        <div id="left-pane">
-            <header id="title">Lab Monitoring</header>
-        
-            <div id="lab-selection">
-                <input type="button" value="Example">
-            </div>
+                <div id="lab-selection">
+                    <input type="button" value="Example" id="lab-button">
+                </div>
 
-            <div id="option-pane">
-                <input type="button" value="Fetch" id="getData">
-                <label for="address">Insert server address and port:</label>
-                <input type="text" name="address" id="ip-address" autocomplete="off">
+                <div id="option-pane">
+                    <input type="button" value="Fetch" id="getData">
+                    <label for="address">Insert server address and port:</label>
+                    <input type="text" name="address" id="ip-address" autocomplete="off">
+                </div>
+
             </div>
-            
         </div>
+
 
 
         <div id="main-pane">
             <header id="title">Weather station dashboard</header>
 
-            <div id="tab-division">
-                <div id="lab-topology">
-                    <canvas></canvas>
-                </div>
+            <div id="dashboard-content">
+                <div id="charts-section">
 
-                <div id="charts">
-                    <canvas id="tempChart"></canvas>
-                    <canvas id="humChart"></canvas>
-                    <canvas id="lumChart"></canvas>
-                </div>
+                    <div class="heatmap-container">
+                        <canvas id="heatmap-canvas" width="600" height="400"></canvas>
+                    </div>
 
-                <div id="data-section">
-                    <div class="data">
-                        <span id="temp">Temperature: NaN</span>
-                        <span id="hum">Humidity: NaN</span>
-                        <span id="lum">Luminosity: NaN</span>
+                    <div class="chart-container">
+                        <canvas id="tempChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="humChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="lumChart"></canvas>
                     </div>
                 </div>
 
+                <div id="workstations-menu">
+                    <h3>Workstations</h3>
+                    <div id="workstations-list">
+
+                    </div>
+                </div>
             </div>
-            
+
+            <div id="data-section">
+            </div>
+
         </div>
 
 
     </div>
 </body>
+
 </html>
