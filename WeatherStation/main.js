@@ -31,8 +31,10 @@ addressField.addEventListener("keydown", (e) => {
 
 sidebarHider.addEventListener('click', () => {
     if (shown) {
+        leftPane.style.width = "0%";
         leftPane.style.visibility = "hidden";
     } else {
+        leftPane.style.width = "100%";
         leftPane.style.visibility = "visible";
     }
     shown = !shown;
@@ -59,7 +61,7 @@ async function getData(address) {
         clearTimeout(timeoutId);
         console.warn("Could not fetch from server, falling back to local measures.json...", err);
         try {
-            response = await fetch("Measures/measures.json");
+            response = await fetch("./Measures/measures.json");
             if (!response.ok) throw new Error("Could not fetch local file");
         } catch (err) {
             alert("Could not load data from server or local file.");

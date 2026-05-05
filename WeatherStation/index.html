@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workstation monitort</title>
+    <title>Workstation monitor</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="main.js" defer></script>
@@ -13,7 +13,7 @@
 <body>
     <div id="page">
         <div id="sidebar">
-            <input type="button" value="<" id="sidebar-hider">
+            <input type="button" value="≡" id="sidebar-hider">
             <div id="left-pane">
                 <header id="title">Lab Monitoring</header>
 
@@ -33,7 +33,11 @@
 
 
         <div id="main-pane">
-            <header id="title">Weather station dashboard</header>
+            <div id="header-section">
+                <header id="title">Weather station dashboard</header>
+                <span id="fetch-result">aaa</span>
+            </div>
+            
 
             <div id="dashboard-content">
                 <div id="charts-section">
