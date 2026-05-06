@@ -7,7 +7,6 @@ const workstationsList = document.querySelector("#workstations-list");
 const sidebarHider = document.querySelector("#sidebar-hider");
 const leftPane = document.querySelector("#left-pane");
 const resultLabel = document.querySelector("#result");
-const fetchResult = document.querySelector("#fetch-result");
 
 let data = []; // array that contains parsed json
 let labs = {}; // object that contains a field for every lab with the respective measures
@@ -22,7 +21,7 @@ let currentSelectedStation = null;
 
 let shown = true;
 
-getDataButton.addEventListener("click", (e) => {
+getDataButton.addEventListener("click", () => {
     getData(addressField.value);
 });
 
@@ -37,8 +36,8 @@ sidebarHider.addEventListener('click', () => {
         leftPane.style.width = "0%";
         leftPane.style.visibility = "hidden";
     } else {
-        leftPane.style.width = "100%";
         leftPane.style.visibility = "visible";
+        leftPane.style.width = "100%";
     }
     shown = !shown;
 });
@@ -89,7 +88,7 @@ async function getData(address) {
         data = json;
 
         for (const sample of json) {
-            parseSample(sample);
+            parseLabsSamples(sample);
         }
 
         createLabsSelections();
@@ -103,7 +102,6 @@ async function getData(address) {
 function setFeedbacklabel(status) {
     if (status === 0) {
         resultLabel.innerHTML = "Connected to server: " + currentServerAddress;
-        fetchResult.classList.add("success-online");
     } else if (status === 1) {
         resultLabel.innerHTML = "Connected to local file";
     } else if (status === 2) {
@@ -114,7 +112,7 @@ function setFeedbacklabel(status) {
 
 }
 
-function parseSample(sample) {
+function parseLabsSamples(sample) {
     let lab = sample.position.split("-")[0];
     // setup array for existing workstation
     if (!(lab in labs)) {
@@ -124,13 +122,14 @@ function parseSample(sample) {
 }
 
 function createLabsSelections() {
+    // empty last lab list
     while (labsSelection.firstChild) {
         labsSelection.removeChild(labsSelection.lastChild);
     }
     const sortedLabs = Object.entries(labs).sort(([a], [b]) =>
-        a.localeCompare(b, undefined, { numeric: true })
+        a.localeCompare(b, undefined, { numeric: true }) // sort labs by number and alphabetic order
     );
-
+    // create lab buttons
     for (const [lab, samples] of sortedLabs) {
         let labButton = document.createElement("input");
         labButton.type = "button";
@@ -151,7 +150,7 @@ function showLabDetails(samples) {
     currentSelectedLabSamples = samples;
     currentSelectedStation = null;
 
-    // Extract unique active stations ordered by workstation number
+    // Extract stations ordered by workstation number
     const stations = [...new Set(samples.map(s => s.position))].sort((a, b) => {
         const numA = parseInt(a.split("-")[1]);
         const numB = parseInt(b.split("-")[1]);
@@ -180,6 +179,7 @@ function showLabDetails(samples) {
     drawLabHeatmap(samples);
 }
 
+// getssamples of the selected station and updates every chart
 function showStationDetails(stationName) {
     currentSelectedStation = stationName;
     const stationSamples = currentSelectedLabSamples.filter(s => s.position === stationName);

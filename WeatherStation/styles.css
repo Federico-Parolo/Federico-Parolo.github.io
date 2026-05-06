@@ -248,14 +248,3 @@ body {
     background-color: rgb(200, 200, 200);
 }
 
-.success-online {
-    background-color: #2ecc71; 
-}
-
-.success-local {
-    background-color: darkorange;
-}
-
-.fail {
-    background-color: brown;
-}
