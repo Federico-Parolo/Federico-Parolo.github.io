@@ -6,6 +6,7 @@ const labsSelection = document.querySelector("#lab-selection");
 const workstationsList = document.querySelector("#workstations-list");
 const sidebarHider = document.querySelector("#sidebar-hider");
 const leftPane = document.querySelector("#left-pane");
+const resultLabel = document.querySelector("#result");
 
 let data = []; // array that contains parsed json
 let labs = {}; // object that contains a field for every lab with the respective measures
@@ -59,7 +60,7 @@ async function getData(address) {
         if (!response.ok) throw new Error(`Request error: ${response.status}`);
     } catch (err) {
         clearTimeout(timeoutId);
-        console.warn("Could not fetch from server, falling back to local measures.json...", err);
+        console.warn("Could not fetch from server, fetching local measures.json", err);
         try {
             response = await fetch("./Measures/measures.json");
             if (!response.ok) throw new Error("Could not fetch local file");
@@ -72,6 +73,9 @@ async function getData(address) {
 
     try {
         let json = await response.json();
+        if (json["data"]) {
+            json = json["data"];
+        }
         //console.log(json);
 
         if (JSON.stringify(data) === JSON.stringify(json)) {
@@ -106,27 +110,7 @@ function parseSample(sample) {
 function createLabsSelections() {
     while (labsSelection.firstChild) {
         labsSelection.removeChild(labsSelection.lastChild);
-    }/*
-    const sortedLabs = Object.entries(labs).sort((a, b) => {
-        const [labA] = a;
-        const [labB] = b;
-
-        const matchA = labA.match(/^([A-Z]+)(\d+)/);
-        const matchB = labB.match(/^([A-Z]+)(\d+)/);
-
-        if (matchA && matchB) {
-            const prefixA = matchA[1];
-            const numA = matchA[2];
-            const prefixB = matchB[1];
-            const numB = matchB[2];
-
-            if (prefixA !== prefixB) {
-                return prefixA.localeCompare(prefixB);
-            }
-            return Number(numA) - Number(numB);
-        }
-        return labA.localeCompare(labB);
-    });*/
+    }
     const sortedLabs = Object.entries(labs).sort(([a], [b]) =>
         a.localeCompare(b, undefined, { numeric: true })
     );
