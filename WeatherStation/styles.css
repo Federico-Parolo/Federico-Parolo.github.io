@@ -40,12 +40,13 @@ body {
 #lab-selection {
     display: flex;
     flex-direction: column;
+    max-height: 75vh;
     overflow-y: auto;
     margin: 1rem;
     margin-right: 0;
     margin-top: 0;
     padding: 0;
-    max-height: 100vh;
+
 }
 
 .lab-button {
@@ -75,7 +76,7 @@ body {
 #option-pane {
     display: flex;
     flex-direction: column;
-    position: sticky;
+    /*sticky*/
     bottom: 0;
     margin-top: auto;
     padding: 1.5rem 1rem;
@@ -145,7 +146,7 @@ body {
     font-weight: bold;
     padding: 1rem 1rem;
     border-radius: 5px;
-    max-height: 2rem;
+    max-height: fit-content;
 }
 
 #dashboard-content {
@@ -248,7 +249,7 @@ body {
 }
 
 .success-online {
-    background-color: #2ecc71;
+    background-color: #2ecc71; 
 }
 
 .success-local {

@@ -11,6 +11,7 @@ const fetchResult = document.querySelector("#fetch-result");
 
 let data = []; // array that contains parsed json
 let labs = {}; // object that contains a field for every lab with the respective measures
+let currentServerAddress = "";
 
 let tempChartInstance = null;
 let humChartInstance = null;
@@ -40,7 +41,6 @@ sidebarHider.addEventListener('click', () => {
         leftPane.style.visibility = "visible";
     }
     shown = !shown;
-    console.log("now shown: " + shown);
 });
 
 async function getData(address) {
@@ -50,6 +50,7 @@ async function getData(address) {
         ? `http://${SERVER_ADDRESS}/data`
         : `http://${address}/data`;
     if (address === "") addressField.value = SERVER_ADDRESS;
+    currentServerAddress = addressField.value;
 
     let response;
 
@@ -59,6 +60,7 @@ async function getData(address) {
         if (!response.ok) throw new Error(`Request error: ${response.status}`);
     } catch (err) {
         setFeedbacklabel(1);
+        alert("Cannot fetch data from specified server");
         console.warn("Could not fetch from server, fetching local measures.json", err);
         try {
             response = await fetch("./Measures/measures.json");
@@ -100,13 +102,14 @@ async function getData(address) {
 
 function setFeedbacklabel(status) {
     if (status === 0) {
-        resultLabel.innerHTML = "Connected to server";
+        resultLabel.innerHTML = "Connected to server: " + currentServerAddress;
+        fetchResult.classList.add("success-online");
     } else if (status === 1) {
         resultLabel.innerHTML = "Connected to local file";
     } else if (status === 2) {
         resultLabel.innerHTML = "No valid data found";
     } else {
-
+        resultLabel.innerHTML = "Undefined problem";
     }
 
 }
@@ -148,27 +151,27 @@ function showLabDetails(samples) {
     currentSelectedLabSamples = samples;
     currentSelectedStation = null;
 
-    // Extract unique active stations
+    // Extract unique active stations ordered by workstation number
     const stations = [...new Set(samples.map(s => s.position))].sort((a, b) => {
         const numA = parseInt(a.split("-")[1]);
         const numB = parseInt(b.split("-")[1]);
         return numA - numB;
     });
 
-    // Populate workstations menu
+    // Fill workstation menu with data
     workstationsList.innerHTML = '';
     for (const station of stations) {
-        let btn = document.createElement("button");
-        btn.classList.add("station-button");
-        btn.innerText = station;
-        btn.addEventListener("click", (e) => {
+        let b = document.createElement("button");
+        b.classList.add("station-button");
+        b.innerText = station;
+        b.addEventListener("click", (e) => {
             for (let b of workstationsList.children) {
                 b.classList.remove("active-station");
             }
-            btn.classList.add("active-station");
+            b.classList.add("active-station");
             showStationDetails(station);
         });
-        workstationsList.appendChild(btn);
+        workstationsList.appendChild(b);
     }
 
     // update charts to show Lab Means
@@ -200,6 +203,7 @@ function getAggregatedData(samples) {
     const hums = [];
     const lums = [];
 
+    // get means of measurements
     for (const ts of timestamps) {
         const g = grouped[ts];
         temps.push(g.tempSum / g.count);
@@ -217,6 +221,8 @@ function updateChartsForLab(samples) {
 
 function updateChartsForStation(samples, stationName) {
     // Already filtered by station, sort by timestamp
+    console.log(stationName);
+    console.log(currentSelectedStation);
     samples.sort((a, b) => a.timestamp.localeCompare(b.timestamp));
 
     const timestamps = samples.map(s => s.timestamp);
@@ -228,18 +234,15 @@ function updateChartsForStation(samples, stationName) {
 }
 
 function renderCharts(labels, temps, hums, lums, title) {
-    // Format labels nicely (extract time if possible)
-    const formattedLabels = labels.map(l => {
-        try {
+    
+    const TsLabels = labels.map(l => {
             return l.split(" ")[1] || l;
-        } catch {
-            return l;
-        }
+
     });
 
-    updateChart('tempChart', formattedLabels, temps, `Temperature (°C) - ${title}`, 'rgb(255, 99, 132)');
-    updateChart('humChart', formattedLabels, hums, `Humidity (%) - ${title}`, 'rgb(54, 162, 235)');
-    updateChart('lumChart', formattedLabels, lums, `Luminosity - ${title}`, 'rgb(255, 206, 86)');
+    updateChart('tempChart', TsLabels, temps, `Temperature (°C) - ${title}`, 'rgb(255, 100,100)');
+    updateChart('humChart', TsLabels, hums, `Humidity (%) - ${title}`, 'rgb(50,150,255)');
+    updateChart('lumChart', TsLabels, lums, `Luminosity - ${title}`, 'rgb(255, 200,100)');
 }
 
 function updateChart(canvasId, labels, data, label, color) {
@@ -281,12 +284,7 @@ function updateChart(canvasId, labels, data, label, color) {
                     y: {
                         beginAtZero: false
                     }
-                }/*,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    }
-                }*/
+                }
             }
         });
 
@@ -297,6 +295,7 @@ function updateChart(canvasId, labels, data, label, color) {
 }
 
 function drawLabHeatmap(samples) {
+    
     const canvas = document.getElementById('heatmap-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -307,9 +306,10 @@ function drawLabHeatmap(samples) {
 
     for (const s of samples) {
         const parts = s.position.split('-');
-        if (parts.length < 2) continue; // bad sample
+        if (parts.length < 2) continue; // wrong format sample
         const id = Number(parts[1]);
-
+        
+        // find last temp for every workstation
         if (!latestTimestamps[id] || s.timestamp > latestTimestamps[id]) {
             latestTimestamps[id] = s.timestamp;
             latestTemps[id] = s.temperature;
