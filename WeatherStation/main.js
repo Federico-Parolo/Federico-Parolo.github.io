@@ -7,6 +7,7 @@ const workstationsList = document.querySelector("#workstations-list");
 const sidebarHider = document.querySelector("#sidebar-hider");
 const leftPane = document.querySelector("#left-pane");
 const resultLabel = document.querySelector("#result");
+const fetchResult = document.querySelector("#fetch-result");
 
 let data = []; // array that contains parsed json
 let labs = {}; // object that contains a field for every lab with the respective measures
@@ -51,21 +52,20 @@ async function getData(address) {
     if (address === "") addressField.value = SERVER_ADDRESS;
 
     let response;
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 2000); // 2s timeout
 
     try {
-        response = await fetch(url, { signal: controller.signal });
-        clearTimeout(timeoutId);
+        response = await fetch(url);
+        setFeedbacklabel(0);
         if (!response.ok) throw new Error(`Request error: ${response.status}`);
     } catch (err) {
-        clearTimeout(timeoutId);
+        setFeedbacklabel(1);
         console.warn("Could not fetch from server, fetching local measures.json", err);
         try {
             response = await fetch("./Measures/measures.json");
             if (!response.ok) throw new Error("Could not fetch local file");
         } catch (err) {
             alert("Could not load data from server or local file.");
+            setFeedbacklabel(2);
             console.error(err);
             return;
         }
@@ -96,6 +96,19 @@ async function getData(address) {
         alert("Error parsing data.");
         console.error("Error:", err);
     }
+}
+
+function setFeedbacklabel(status) {
+    if (status === 0) {
+        resultLabel.innerHTML = "Connected to server";
+    } else if (status === 1) {
+        resultLabel.innerHTML = "Connected to local file";
+    } else if (status === 2) {
+        resultLabel.innerHTML = "No valid data found";
+    } else {
+
+    }
+
 }
 
 function parseSample(sample) {
@@ -355,6 +368,7 @@ function drawDesk(ctx, id, temp, x, y) {
     ctx.textBaseline = 'middle';
     ctx.fillText(id === 0 ? "Teacher" : id, x + l * 0.5, y - height);
 }
+
 
 // Initial fetch
 addressField.value = SERVER_ADDRESS;
