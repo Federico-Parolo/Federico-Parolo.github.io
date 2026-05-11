@@ -21,6 +21,8 @@ let currentSelectedStation = null;
 
 let shown = true;
 
+// prediction of air quality
+
 getDataButton.addEventListener("click", () => {
     getData(addressField.value);
 });

@@ -156,7 +156,7 @@ body {
     flex: 1;
 }
 
-#charts-section {
+#left-section {
     flex: 3;
     display: flex;
     flex-direction: column;
